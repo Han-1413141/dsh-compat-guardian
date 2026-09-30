@@ -1,0 +1,3 @@
+- insert:
+    - id: fixture-load-failure
+      name: dsh-fixture-load-failure

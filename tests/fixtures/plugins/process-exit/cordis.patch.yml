@@ -1,0 +1,3 @@
+- insert:
+    - id: fixture-process-exit
+      name: dsh-fixture-process-exit

@@ -1,0 +1,3 @@
+- insert:
+    - id: fixture-service-conflict
+      name: dsh-fixture-service-conflict

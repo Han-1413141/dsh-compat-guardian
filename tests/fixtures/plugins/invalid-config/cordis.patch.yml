@@ -1,0 +1,5 @@
+- insert:
+    - id: fixture-invalid-config
+      name: dsh-fixture-invalid-config
+      config:
+        port: deliberately-not-a-number

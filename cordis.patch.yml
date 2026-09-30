@@ -1,0 +1,7 @@
+- insert:
+    - id: compat-guardian
+      name: dsh-compat-guardian
+      config:
+        policy: quarantine
+        intervalMs: 30000
+        failureThreshold: 2

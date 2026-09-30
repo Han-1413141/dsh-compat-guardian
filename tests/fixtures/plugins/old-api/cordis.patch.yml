@@ -1,0 +1,3 @@
+- insert:
+    - id: fixture-old-api
+      name: dsh-fixture-old-api

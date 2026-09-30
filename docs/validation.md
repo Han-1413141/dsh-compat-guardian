@@ -64,3 +64,12 @@
 独立仓库的 35 项测试通过；[Windows/Linux CI](https://github.com/Han-1413141/dsh-compat-guardian/actions/runs/36690598207) 均通过，验证提交为 `a731a03d9239537b29d8302d3427bb28bb46a84f`。
 
 最终 npm 安装包已通过官方 CLI 安装并在真实 DSH Web 中加载，线上完整性值与本地测试文件一致。GitHub Release 附件与 npm 使用同一安装包。
+
+## 0.2.1 安装修复验证
+
+2026-09-30，提交 `33aa4132801a43b4d39102e831f8847265716497`。
+
+- 仓库包含编译文件并移除 `prepack`，修复 Git 安装需要构建授权的问题。
+- pnpm 11.21.0、全新独立 store、空 `allowBuilds`，不传 `--ignore-scripts`：直接从公开 GitHub 地址安装通过，入口文件与本地编译结果一致，CLI 帮助正常。
+- 最终 npm 安装包在真实 DSH Web 中加载为 `active`。
+- [本次 Windows/Linux CI](https://github.com/Han-1413141/dsh-compat-guardian/actions/runs/36693742679) 全部通过，包括 35 项测试、Git 安装、真实冲突处理与启动故障救援。

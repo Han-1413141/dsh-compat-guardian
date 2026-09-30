@@ -26,7 +26,8 @@ try {
   // No build permissions and no --ignore-scripts escape hatch: exercise the Git fetcher.
   await writeFile(join(profile, 'package.json'), JSON.stringify({ name: 'git-install-smoke', private: true }));
   await writeFile(join(profile, 'pnpm-workspace.yaml'),
-    'packages:\n  - .\nnodeLinker: hoisted\nautoInstallPeers: false\nallowBuilds: {}\n');
+    'packages:\n  - .\nnodeLinker: hoisted\nautoInstallPeers: false\nallowBuilds: {}\n' +
+    `storeDir: ${JSON.stringify(join(root, 'store'))}\n`);
   const result = await exec(process.execPath, [cli, 'plugin', '--profile', 'web', 'add', spec],
     { cwd: root, env, windowsHide: true, timeout: 180000, maxBuffer: 2 ** 20 });
   const packageRoot = join(profile, 'node_modules', pkg.name);
@@ -49,9 +50,11 @@ try {
   assert(!result.stderr.includes('GIT_DEP_PREPARE_NOT_ALLOWED'), result.stderr);
   console.log(`${pkg.name}@${pkg.version}: Git install passed with an empty build allowlist; all entry points match and the CLI loads.`);
 } catch (error) {
-  if (error.stdout) console.error(error.stdout);
-  if (error.stderr) console.error(error.stderr);
-  throw error;
+  const detail = [error.stack, error.stdout, error.stderr].filter(Boolean).join('\n');
+  await mkdir(join(repo, '.test-output'), { recursive: true });
+  await writeFile(join(repo, '.test-output', 'install-smoke.log'), detail);
+  console.error(detail.slice(-6000));
+  process.exitCode = 1;
 } finally {
   const actual = await realpath(root);
   const temp = await realpath(tmpdir());

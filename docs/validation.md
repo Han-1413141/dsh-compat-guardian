@@ -61,6 +61,6 @@
 
 ## 0.2.0 发布验证
 
-独立仓库的 35 项测试通过；[Windows/Linux CI](https://github.com/Han-1413141/dsh-compat-guardian/actions/runs/36690598207) 均通过，验证提交为 `a731a03d9239537b29d8302d3427bb28bb46a84f'。
+独立仓库的 35 项测试通过；[Windows/Linux CI](https://github.com/Han-1413141/dsh-compat-guardian/actions/runs/36690598207) 均通过，验证提交为 `a731a03d9239537b29d8302d3427bb28bb46a84f`。
 
 最终 npm 安装包已通过官方 CLI 安装并在真实 DSH Web 中加载，线上完整性值与本地测试文件一致。GitHub Release 附件与 npm 使用同一安装包。
